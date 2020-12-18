@@ -1,21 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 const Nosotros = () => {
-    /*const datos=[
-        {id:1, nombre:'ReactJs'},
-        {id:1, nombre:'VueJs'},
-        {id:1, nombre:'AngularJs'}
-    ]*/
 
     const [equipo, setEquipo] = React.useState([])
 
-    React.useEffect(()=>{
+    React.useEffect(() => {
         obtenerDatos()
-        /*setEquipo(datos)*/
-    },[])
-    const obtenerDatos = async()=>{
-        const data = await fetch ('https://age-of-empires-2-api.herokuapp.com/api/v1/civilizations')
+    }, [])
+
+    const obtenerDatos = async () => {
+        const data = await fetch('https://age-of-empires-2-api.herokuapp.com/api/v1/civilizations')
         const users = await data.json()
         setEquipo(users.civilizations)
     }
@@ -23,15 +18,16 @@ const Nosotros = () => {
     return (
         <div>
             <h1>Nosotros</h1>
-            <ul>{
-                equipo.map(item =>(
-                    <li key={item.id}>
-                        <Link to={`/nosotros/${item.id}`}>
-                        {item.name} - {item.expansion}
-                        </Link>
-                    </li>
-                ))
-            }     
+            <ul>
+                {
+                    equipo.map(item => (
+                        <li key={item.id}>
+                            <Link to={`/nosotros/${item.id}`}>
+                                {item.name} - {item.expansion}
+                            </Link>
+                        </li>
+                    ))
+                }
             </ul>
         </div>
     )

@@ -1,13 +1,15 @@
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  NavLink
 } from "react-router-dom";
-import Constacto from "./components/Constacto";
-import Inicio from "./components/Inicio";
-import Nosotros from "./components/Nosotros";
-import User from "./components/User";
+import Inicio from './components/Inicio';
+import Contacto from './components/Contacto';
+import Nosotros from './components/Nosotros';
+import User from './components/User';
 
 function App() {
   return (
@@ -17,26 +19,26 @@ function App() {
           <Link to="/" className="btn btn-dark">
             Inicio
           </Link>
-          <Link to="/contacto" className="btn btn-dark">
-            Constacto
-          </Link>
           <Link to="/nosotros" className="btn btn-dark">
             Nosotros
           </Link>
+          <NavLink to="/contacto" className="btn btn-dark" activeClassName="active">
+            Contacto
+          </NavLink>
         </div>
-        <hr/>
+        <hr />
         <Switch>
-          <Route path ="/nosotros/:id">
-            <User/>
-          </Route>
-        <Route path="/" exact>
-            <Inicio/>
+          <Route path="/nosotros/:id">
+            <User />
           </Route>
           <Route path="/contacto">
-            <Constacto/>
+            <Contacto />
           </Route>
           <Route path="/nosotros">
-            <Nosotros/>
+            <Nosotros />
+          </Route>
+          <Route path="/" exact>
+            <Inicio />
           </Route>
         </Switch>
       </div>
